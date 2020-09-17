@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="SMS.UserControlRegister"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SMS"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Height="auto" Width="auto">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="203*"/>
+            <ColumnDefinition Width="351*"/>
+            <ColumnDefinition Width="246*"/>
+        </Grid.ColumnDefinitions>
+        <materialDesign:TransitioningContent x:Name="TransitioningContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft,Duration=0:0:0.8}" Grid.ColumnSpan="3">
+
+            <Grid Margin="0,10,0,-10" Height="306">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Grid.ColumnSpan="3" Margin="-356,-81,-304,-75" Background="#FFA6CFB9" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="353*"/>
+                        <ColumnDefinition Width="170*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Effect>
+                        <DropShadowEffect ShadowDepth="1" Color="#FFFDF9F9"/>
+                    </Grid.Effect>
+
+                    <StackPanel Grid.ColumnSpan="2">
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Label Margin="-4,174,40,-163" Grid.Row="2"/>
+                            <TextBox Margin="54,163,418,-154" Grid.ColumnSpan="2" Grid.Row="2" BorderBrush="Maroon" Foreground="Black" RenderTransformOrigin="0.5,0.5" BorderThickness="2"/>
+                            <Label Grid.Row="2" Margin="-4,163,40,-163" FontWeight="Bold">E-mail:</Label>
+                            <TextBox Grid.Row="2" Margin="54,206,418,-196" Grid.ColumnSpan="2" BorderThickness="2" BorderBrush="Maroon"/>
+                            <Label Grid.Row="2" Margin="-4,201,40,-201" FontWeight="Bold">Grp No:</Label>
+                            <TextBox Grid.Row="2" Margin="54,239,418,-229" Grid.ColumnSpan="2" BorderThickness="2" BorderBrush="Maroon"/>
+                            <Label Grid.Row="2" Margin="-4,239,40,-239" Content="Address:" FontWeight="Bold"/>
+                        </Grid>
+                        <!--<TextBlock Margin="10" FontFamily="Showcard Gothic" FontSize="12" Text="REGISTRATION FORM" Foreground="#FFC00000"/>
+                        <Image Source="register.jpg" Width="200" Height="130" Stretch="UniformToFill"/>
+                        <TextBlock FontSize="8" Margin="5" TextWrapping="Wrap" FontFamily="Champagne &amp; Limousines">
+                            Mandatory programme registration
+                            Chalmers applies self-service online programme 
+                            registration in Ladok for all admitted students. 
+                            Follow the instructions and pay attention to the dates. 
+                            You must complete the programme registration on time 
+                            or you will lose your study place. Read the terms and 
+                            conditions on how you must take active measures 
+                            to make sure that you do claim your study place.
+                        </TextBlock>-->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="42" Margin="-13,-13,0,-10" Width="163"/>
+
+                    </StackPanel>
+                    <Button Content="Delete" HorizontalAlignment="Left" Height="30" Margin="226,368,0,0" VerticalAlignment="Top" Width="86"/>
+                    <Button Content="New" HorizontalAlignment="Left" Height="30" Margin="121,368,0,0" VerticalAlignment="Top" Width="86"/>
+                    <Button Content="Save" HorizontalAlignment="Left" Height="30" Margin="21,368,0,0" VerticalAlignment="Top" Width="86"/>
+                    <Button Content="Update" HorizontalAlignment="Left" Height="30" Margin="226,412,0,0" VerticalAlignment="Top" Width="86"/>
+                    <Button Content="Next" HorizontalAlignment="Left" Height="30" Margin="121,412,0,0" VerticalAlignment="Top" Width="86"/>
+                    <Button Content="Previous" HorizontalAlignment="Left" Height="30" Margin="21,412,0,0" VerticalAlignment="Top" Width="86"/>
+                    <Label Content="STUDENTS INFORMATION" HorizontalAlignment="Left" Margin="170,20,0,0" VerticalAlignment="Top" Width="300" FontFamily="Arial Black" FontSize="20" Background="#FFF9F9F9" Foreground="#DD111117"/>
+                    <DataGrid HorizontalAlignment="Left" Height="372" Margin="320,70,0,0" VerticalAlignment="Top" Width="374"/>
+                    <TextBox Margin="66,86,428,349" BorderBrush="Maroon" Foreground="Black" RenderTransformOrigin="0.5,0.5" BorderThickness="2"/>
+                    <TextBox Margin="66,129,428,300" BorderBrush="Maroon" Foreground="Black" RenderTransformOrigin="0.5,0.5" BorderThickness="2"/>
+                    <TextBox Margin="64,279,428,150" BorderBrush="Maroon" Foreground="Black" RenderTransformOrigin="0.5,0.5" BorderThickness="2"/>
+                    <TextBox Margin="64,317,428,112" BorderBrush="Maroon" Foreground="Black" RenderTransformOrigin="0.5,0.5" BorderThickness="2"/>
+                    <Label Margin="5,279,644,145" Content="CV:" FontWeight="Bold"/>
+                    <Label Margin="5,129,649,295" Content="Names:" FontWeight="Bold"/>
+                    <Label Margin="5,86,649,338" Content=" ID:" FontWeight="Bold"/>
+                    <Label Margin="4,317,645,112" Content="Date:" FontWeight="Bold"/>
+                </Grid>
+            </Grid>
+        </materialDesign:TransitioningContent>
+    </Grid>
+</UserControl>
+

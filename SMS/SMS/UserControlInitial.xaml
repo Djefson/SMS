@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="SMS.UserControlInitial"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SMS"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Height="auto" Width="auto">
+    <Grid>
+
+        <materialDesign:TransitioningContent x:Name="TransitioningContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft,Duration=0:0:0.8}">
+            <StackPanel  Orientation="Horizontal" VerticalAlignment="Bottom">
+
+                <StackPanel>
+                    <TextBlock Text="WELCOME MESSAGE" FontSize="40" FontFamily="Cooper Black" Foreground="#FFC00000"/>
+                    <StackPanel Margin="10">
+                        <TextBlock Text=" FIRST INFORMATION " FontSize="40" FontFamily="Cooper Black" Foreground="#FFC00000"/>
+                        <TextBlock Text="USERS CATALOGUE" FontSize="25" FontFamily="Champagne &amp; Limousines" FontWeight="Bold" Margin="5"/>
+                        
+                        <TextBlock  FontSize="18" Width="250" FontFamily="Champagne &amp; Limousines"  Margin="5" TextWrapping="Wrap">
+                            Rules use the registering person's details to determine whether 
+                            they should be allowed to register depending on the conditions of the rule. 
+                            You can create conditions using information such as the contact's personal and organisational attributes, 
+                            previous registration history, and even custom field information.
+                            
+                        </TextBlock>
+                    </StackPanel>
+                <Button FontFamily="Champagne &amp; Limousines" Content="Read More " FontSize="18" Margin="25"/>
+                </StackPanel>
+                <Image Margin="10" Width="200" Height="200" Source="students.jpg" Stretch="UniformToFill"/>
+            </StackPanel>
+         </materialDesign:TransitioningContent>
+    </Grid>
+</UserControl>

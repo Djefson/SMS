@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2c28d750978a41c7bd8cb1f1e330d631" Name="Diagram1">
+        <EntityTypeShape EntityType="SMSModel.Attendance" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SMSModel.Case_Officer" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SMSModel.Cours" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SMSModel.Exam_Details" Width="1.5" PointX="3" PointY="7" />
+        <EntityTypeShape EntityType="SMSModel.Exam" Width="1.5" PointX="0.75" PointY="14.25" />
+        <EntityTypeShape EntityType="SMSModel.GDPR" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SMSModel.Group" Width="1.5" PointX="6" PointY="7" />
+        <EntityTypeShape EntityType="SMSModel.Internship" Width="1.5" PointX="3" PointY="16.625" />
+        <EntityTypeShape EntityType="SMSModel.Question" Width="1.5" PointX="0.75" PointY="2" />
+        <EntityTypeShape EntityType="SMSModel.Result" Width="1.5" PointX="3" PointY="13.75" />
+        <EntityTypeShape EntityType="SMSModel.Role" Width="1.5" PointX="1.5" PointY="34.625" />
+        <EntityTypeShape EntityType="SMSModel.RoleUser" Width="1.5" PointX="3.75" PointY="28.375" />
+        <EntityTypeShape EntityType="SMSModel.Student" Width="1.5" PointX="0.75" PointY="6" />
+        <EntityTypeShape EntityType="SMSModel.Subject" Width="1.5" PointX="1.5" PointY="20.625" />
+        <EntityTypeShape EntityType="SMSModel.Teacher" Width="1.5" PointX="1.5" PointY="24" />
+        <EntityTypeShape EntityType="SMSModel.Type" Width="1.5" PointX="1.5" PointY="31.625" />
+        <EntityTypeShape EntityType="SMSModel.User" Width="1.5" PointX="1.5" PointY="28" />
+        <AssociationConnector Association="SMSModel.FK_Exam_Details_ExamID" />
+        <AssociationConnector Association="SMSModel.FK_Exam_Details_QuestionId" />
+        <AssociationConnector Association="SMSModel.FK_Exam_Details_StudentId" />
+        <AssociationConnector Association="SMSModel.FK_Exam_Details_SubjectId" />
+        <AssociationConnector Association="SMSModel.FK_Exams_TeacherId" />
+        <AssociationConnector Association="SMSModel.FK_Exams_TypeId" />
+        <AssociationConnector Association="SMSModel.FK_Groups_StudentId" />
+        <AssociationConnector Association="SMSModel.FK_Groups_TeacherId" />
+        <AssociationConnector Association="SMSModel.FK_Internship_StudentId" />
+        <AssociationConnector Association="SMSModel.FK_Questions_SubjectID" />
+        <AssociationConnector Association="SMSModel.FK_Result_StudentId" />
+        <AssociationConnector Association="SMSModel.FK_RoleUsers_RoleId" />
+        <AssociationConnector Association="SMSModel.FK_RoleUsers_UserId" />
+        <AssociationConnector Association="SMSModel.FK_Teacher_UserId" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

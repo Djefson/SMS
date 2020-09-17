@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Attendance">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Attended" Type="bit" />
+    <Property Name="Date" Type="date" />
+    <Property Name="AbsenceReason" Type="nvarchar(max)" />
+    <Property Name="CheckIn_Time" Type="datetime" />
+    <Property Name="CheckOut_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Case Officers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Courses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Location" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Exam_Details">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="QuestionId" Type="int" />
+    <Property Name="Option Selected" Type="bit" />
+    <Property Name="CorrectOption" Type="nvarchar" MaxLength="50" />
+    <Property Name="SubjectId" Type="int" />
+    <Property Name="Result" Type="bit" />
+    <Property Name="StudentId" Type="int" />
+    <Property Name="ExamID" Type="int" />
+  </EntityType>
+  <EntityType Name="Exams">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Time" Type="nvarchar" MaxLength="50" />
+    <Property Name="TotalNumberOfQuestions" Type="nvarchar" MaxLength="50" />
+    <Property Name="TypeId" Type="int" />
+    <Property Name="TotalMarks" Type="nvarchar" MaxLength="50" />
+    <Property Name="TeacherId" Type="int" />
+  </EntityType>
+  <EntityType Name="GDPR">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Columns in Student" Type="bit" />
+  </EntityType>
+  <EntityType Name="Groups">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="FUB_StartDate" Type="date" />
+    <Property Name="FUB_EndDate" Type="date" />
+    <Property Name="FUB_TotDays" Type="int" />
+    <Property Name="AUB_EndDate" Type="date" />
+    <Property Name="AUB_TotDays" Type="int" />
+    <Property Name="Location" Type="nvarchar" MaxLength="50" />
+    <Property Name="TeacherId" Type="int" />
+    <Property Name="StudentId" Type="int" />
+  </EntityType>
+  <EntityType Name="Internship">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="StudentId" Type="int" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="EndDate" Type="date" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactPerson" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactPhoneNumber" Type="int" />
+    <Property Name="ContactEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Technologies" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Questions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Question" Type="nvarchar" MaxLength="50" />
+    <Property Name="Option1" Type="bit" />
+    <Property Name="Option2" Type="bit" />
+    <Property Name="Option3" Type="bit" />
+    <Property Name="Option4" Type="bit" />
+    <Property Name="CorrectOption" Type="nvarchar" MaxLength="50" />
+    <Property Name="Explanation" Type="nvarchar" MaxLength="50" />
+    <Property Name="SubjectID" Type="int" />
+  </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentId" Type="int" />
+    <Property Name="TotalMaxScore" Type="int" />
+    <Property Name="TotalSubjectScore" Type="int" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RoleUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date_of_Birth" Type="date" />
+    <Property Name="FUB_ärandenummer" Type="nvarchar" MaxLength="50" />
+    <Property Name="AUB_ärandenummer" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProfilePicture" Type="image" />
+    <Property Name="CV" Type="nvarchar" MaxLength="50" />
+    <Property Name="ICE_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="ICE_Mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="ICE_emails_Address" Type="nvarchar" MaxLength="50" />
+    <Property Name="HandläggareId" Type="int" />
+    <Property Name="GroupId" Type="int" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Subjects">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersonNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone_Number" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Types">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="Role" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Exam_Details_ExamID">
+    <End Role="Exams" Type="Self.Exams" Multiplicity="0..1" />
+    <End Role="Exam_Details" Type="Self.Exam_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exams">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Exam_Details">
+        <PropertyRef Name="ExamID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Exam_Details_QuestionId">
+    <End Role="Questions" Type="Self.Questions" Multiplicity="0..1" />
+    <End Role="Exam_Details" Type="Self.Exam_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Exam_Details">
+        <PropertyRef Name="QuestionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Exam_Details_StudentId">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="Exam_Details" Type="Self.Exam_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Exam_Details">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Exam_Details_SubjectId">
+    <End Role="Subjects" Type="Self.Subjects" Multiplicity="0..1" />
+    <End Role="Exam_Details" Type="Self.Exam_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subjects">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Exam_Details">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Exams_TeacherId">
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+    <End Role="Exams" Type="Self.Exams" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Exams">
+        <PropertyRef Name="TeacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Exams_TypeId">
+    <End Role="Types" Type="Self.Types" Multiplicity="0..1" />
+    <End Role="Exams" Type="Self.Exams" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Types">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Exams">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Groups_StudentId">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Groups">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Groups_TeacherId">
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+    <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Groups">
+        <PropertyRef Name="TeacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Internship_StudentId">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="Internship" Type="Self.Internship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Internship">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Questions_SubjectID">
+    <End Role="Subjects" Type="Self.Subjects" Multiplicity="0..1" />
+    <End Role="Questions" Type="Self.Questions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subjects">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Questions">
+        <PropertyRef Name="SubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Result_StudentId">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="Result" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleUsers_RoleId">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+    <End Role="RoleUsers" Type="Self.RoleUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoleUsers">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleUsers_UserId">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="RoleUsers" Type="Self.RoleUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoleUsers">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Teacher_UserId">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Teacher">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SMSModelStoreContainer">
+    <EntitySet Name="Attendance" EntityType="Self.Attendance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Case Officers" EntityType="Self.Case Officers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exam_Details" EntityType="Self.Exam_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exams" EntityType="Self.Exams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GDPR" EntityType="Self.GDPR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Internship" EntityType="Self.Internship" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Result" EntityType="Self.Result" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoleUsers" EntityType="Self.RoleUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Types" EntityType="Self.Types" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Exam_Details_ExamID" Association="Self.FK_Exam_Details_ExamID">
+      <End Role="Exams" EntitySet="Exams" />
+      <End Role="Exam_Details" EntitySet="Exam_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Exam_Details_QuestionId" Association="Self.FK_Exam_Details_QuestionId">
+      <End Role="Questions" EntitySet="Questions" />
+      <End Role="Exam_Details" EntitySet="Exam_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Exam_Details_StudentId" Association="Self.FK_Exam_Details_StudentId">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Exam_Details" EntitySet="Exam_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Exam_Details_SubjectId" Association="Self.FK_Exam_Details_SubjectId">
+      <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="Exam_Details" EntitySet="Exam_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Exams_TeacherId" Association="Self.FK_Exams_TeacherId">
+      <End Role="Teacher" EntitySet="Teacher" />
+      <End Role="Exams" EntitySet="Exams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Exams_TypeId" Association="Self.FK_Exams_TypeId">
+      <End Role="Types" EntitySet="Types" />
+      <End Role="Exams" EntitySet="Exams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Groups_StudentId" Association="Self.FK_Groups_StudentId">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Groups" EntitySet="Groups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Groups_TeacherId" Association="Self.FK_Groups_TeacherId">
+      <End Role="Teacher" EntitySet="Teacher" />
+      <End Role="Groups" EntitySet="Groups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Internship_StudentId" Association="Self.FK_Internship_StudentId">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Internship" EntitySet="Internship" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Questions_SubjectID" Association="Self.FK_Questions_SubjectID">
+      <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="Questions" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Result_StudentId" Association="Self.FK_Result_StudentId">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Result" EntitySet="Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleUsers_RoleId" Association="Self.FK_RoleUsers_RoleId">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="RoleUsers" EntitySet="RoleUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleUsers_UserId" Association="Self.FK_RoleUsers_UserId">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="RoleUsers" EntitySet="RoleUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Teacher_UserId" Association="Self.FK_Teacher_UserId">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Teacher" EntitySet="Teacher" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,1147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Attended" Type="bit" />
+          <Property Name="Date" Type="date" />
+          <Property Name="AbsenceReason" Type="nvarchar(max)" />
+          <Property Name="CheckIn_Time" Type="datetime" />
+          <Property Name="CheckOut_Time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Case Officers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Exam_Details">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="QuestionId" Type="int" />
+          <Property Name="Option Selected" Type="bit" />
+          <Property Name="CorrectOption" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubjectId" Type="int" />
+          <Property Name="Result" Type="bit" />
+          <Property Name="StudentId" Type="int" />
+          <Property Name="ExamID" Type="int" />
+        </EntityType>
+        <EntityType Name="Exams">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" />
+          <Property Name="TotalNumberOfQuestions" Type="nvarchar" MaxLength="50" />
+          <Property Name="TypeId" Type="int" />
+          <Property Name="TotalMarks" Type="nvarchar" MaxLength="50" />
+          <Property Name="TeacherId" Type="int" />
+        </EntityType>
+        <EntityType Name="GDPR">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Columns in Student" Type="bit" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="FUB_StartDate" Type="date" />
+          <Property Name="FUB_EndDate" Type="date" />
+          <Property Name="FUB_TotDays" Type="int" />
+          <Property Name="AUB_EndDate" Type="date" />
+          <Property Name="AUB_TotDays" Type="int" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" />
+          <Property Name="TeacherId" Type="int" />
+          <Property Name="StudentId" Type="int" />
+        </EntityType>
+        <EntityType Name="Internship">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="StudentId" Type="int" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactPhoneNumber" Type="int" />
+          <Property Name="ContactEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Technologies" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Questions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Question" Type="nvarchar" MaxLength="50" />
+          <Property Name="Option1" Type="bit" />
+          <Property Name="Option2" Type="bit" />
+          <Property Name="Option3" Type="bit" />
+          <Property Name="Option4" Type="bit" />
+          <Property Name="CorrectOption" Type="nvarchar" MaxLength="50" />
+          <Property Name="Explanation" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubjectID" Type="int" />
+        </EntityType>
+        <EntityType Name="Result">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="int" />
+          <Property Name="TotalMaxScore" Type="int" />
+          <Property Name="TotalSubjectScore" Type="int" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RoleUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date_of_Birth" Type="date" />
+          <Property Name="FUB_ärandenummer" Type="nvarchar" MaxLength="50" />
+          <Property Name="AUB_ärandenummer" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProfilePicture" Type="image" />
+          <Property Name="CV" Type="nvarchar" MaxLength="50" />
+          <Property Name="ICE_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ICE_Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="ICE_emails_Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="HandläggareId" Type="int" />
+          <Property Name="GroupId" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Subjects">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone_Number" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="Types">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Exam_Details_ExamID">
+          <End Role="Exams" Type="Self.Exams" Multiplicity="0..1" />
+          <End Role="Exam_Details" Type="Self.Exam_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exams">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exam_Details">
+              <PropertyRef Name="ExamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exam_Details_QuestionId">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="0..1" />
+          <End Role="Exam_Details" Type="Self.Exam_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exam_Details">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exam_Details_StudentId">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Exam_Details" Type="Self.Exam_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exam_Details">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exam_Details_SubjectId">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="0..1" />
+          <End Role="Exam_Details" Type="Self.Exam_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exam_Details">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exams_TeacherId">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+          <End Role="Exams" Type="Self.Exams" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exams">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exams_TypeId">
+          <End Role="Types" Type="Self.Types" Multiplicity="0..1" />
+          <End Role="Exams" Type="Self.Exams" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Types">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exams">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Groups_StudentId">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Groups_TeacherId">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+          <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Internship_StudentId">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Internship" Type="Self.Internship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Internship">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questions_SubjectID">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="0..1" />
+          <End Role="Questions" Type="Self.Questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Questions">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Result_StudentId">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Result" Type="Self.Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Result">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleUsers_RoleId">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="RoleUsers" Type="Self.RoleUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoleUsers">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleUsers_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="RoleUsers" Type="Self.RoleUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoleUsers">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SMSModelStoreContainer">
+          <EntitySet Name="Attendance" EntityType="Self.Attendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Case Officers" EntityType="Self.Case Officers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exam_Details" EntityType="Self.Exam_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exams" EntityType="Self.Exams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GDPR" EntityType="Self.GDPR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Internship" EntityType="Self.Internship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Result" EntityType="Self.Result" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleUsers" EntityType="Self.RoleUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Types" EntityType="Self.Types" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Exam_Details_ExamID" Association="Self.FK_Exam_Details_ExamID">
+            <End Role="Exams" EntitySet="Exams" />
+            <End Role="Exam_Details" EntitySet="Exam_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exam_Details_QuestionId" Association="Self.FK_Exam_Details_QuestionId">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="Exam_Details" EntitySet="Exam_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exam_Details_StudentId" Association="Self.FK_Exam_Details_StudentId">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Exam_Details" EntitySet="Exam_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exam_Details_SubjectId" Association="Self.FK_Exam_Details_SubjectId">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Exam_Details" EntitySet="Exam_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exams_TeacherId" Association="Self.FK_Exams_TeacherId">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Exams" EntitySet="Exams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exams_TypeId" Association="Self.FK_Exams_TypeId">
+            <End Role="Types" EntitySet="Types" />
+            <End Role="Exams" EntitySet="Exams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Groups_StudentId" Association="Self.FK_Groups_StudentId">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Groups_TeacherId" Association="Self.FK_Groups_TeacherId">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Internship_StudentId" Association="Self.FK_Internship_StudentId">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Internship" EntitySet="Internship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questions_SubjectID" Association="Self.FK_Questions_SubjectID">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Questions" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_StudentId" Association="Self.FK_Result_StudentId">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Result" EntitySet="Result" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleUsers_RoleId" Association="Self.FK_RoleUsers_RoleId">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RoleUsers" EntitySet="RoleUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleUsers_UserId" Association="Self.FK_RoleUsers_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="RoleUsers" EntitySet="RoleUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_UserId" Association="Self.FK_Teacher_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Attendances" EntityType="SMSModel.Attendance" />
+          <EntitySet Name="Case_Officers" EntityType="SMSModel.Case_Officer" />
+          <EntitySet Name="Courses" EntityType="SMSModel.Cours" />
+          <EntitySet Name="Exam_Details" EntityType="SMSModel.Exam_Details" />
+          <EntitySet Name="Exams" EntityType="SMSModel.Exam" />
+          <EntitySet Name="GDPRs" EntityType="SMSModel.GDPR" />
+          <EntitySet Name="Groups" EntityType="SMSModel.Group" />
+          <EntitySet Name="Internships" EntityType="SMSModel.Internship" />
+          <EntitySet Name="Questions" EntityType="SMSModel.Question" />
+          <EntitySet Name="Results" EntityType="SMSModel.Result" />
+          <EntitySet Name="Roles" EntityType="SMSModel.Role" />
+          <EntitySet Name="RoleUsers" EntityType="SMSModel.RoleUser" />
+          <EntitySet Name="Students" EntityType="SMSModel.Student" />
+          <EntitySet Name="Subjects" EntityType="SMSModel.Subject" />
+          <EntitySet Name="Teachers" EntityType="SMSModel.Teacher" />
+          <EntitySet Name="Types" EntityType="SMSModel.Type" />
+          <EntitySet Name="Users" EntityType="SMSModel.User" />
+          <AssociationSet Name="FK_Exam_Details_ExamID" Association="SMSModel.FK_Exam_Details_ExamID">
+            <End Role="Exam" EntitySet="Exams" />
+            <End Role="Exam_Details" EntitySet="Exam_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exam_Details_QuestionId" Association="SMSModel.FK_Exam_Details_QuestionId">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="Exam_Details" EntitySet="Exam_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exam_Details_StudentId" Association="SMSModel.FK_Exam_Details_StudentId">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Exam_Details" EntitySet="Exam_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exam_Details_SubjectId" Association="SMSModel.FK_Exam_Details_SubjectId">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Exam_Details" EntitySet="Exam_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exams_TeacherId" Association="SMSModel.FK_Exams_TeacherId">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="Exam" EntitySet="Exams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exams_TypeId" Association="SMSModel.FK_Exams_TypeId">
+            <End Role="Type" EntitySet="Types" />
+            <End Role="Exam" EntitySet="Exams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Groups_StudentId" Association="SMSModel.FK_Groups_StudentId">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Group" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Groups_TeacherId" Association="SMSModel.FK_Groups_TeacherId">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="Group" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Internship_StudentId" Association="SMSModel.FK_Internship_StudentId">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Internship" EntitySet="Internships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questions_SubjectID" Association="SMSModel.FK_Questions_SubjectID">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_StudentId" Association="SMSModel.FK_Result_StudentId">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Result" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleUsers_RoleId" Association="SMSModel.FK_RoleUsers_RoleId">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="RoleUser" EntitySet="RoleUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleUsers_UserId" Association="SMSModel.FK_RoleUsers_UserId">
+            <End Role="User" EntitySet="Users" />
+            <End Role="RoleUser" EntitySet="RoleUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_UserId" Association="SMSModel.FK_Teacher_UserId">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Teacher" EntitySet="Teachers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Attended" Type="Boolean" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="AbsenceReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CheckIn_Time" Type="DateTime" Precision="3" />
+          <Property Name="CheckOut_Time" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Case_Officer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Cours">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Exam_Details">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="QuestionId" Type="Int32" />
+          <Property Name="Option_Selected" Type="Boolean" />
+          <Property Name="CorrectOption" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubjectId" Type="Int32" />
+          <Property Name="Result" Type="Boolean" />
+          <Property Name="StudentId" Type="Int32" />
+          <Property Name="ExamID" Type="Int32" />
+          <NavigationProperty Name="Exam" Relationship="SMSModel.FK_Exam_Details_ExamID" FromRole="Exam_Details" ToRole="Exam" />
+          <NavigationProperty Name="Question" Relationship="SMSModel.FK_Exam_Details_QuestionId" FromRole="Exam_Details" ToRole="Question" />
+          <NavigationProperty Name="Student" Relationship="SMSModel.FK_Exam_Details_StudentId" FromRole="Exam_Details" ToRole="Student" />
+          <NavigationProperty Name="Subject" Relationship="SMSModel.FK_Exam_Details_SubjectId" FromRole="Exam_Details" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Exam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalNumberOfQuestions" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TypeId" Type="Int32" />
+          <Property Name="TotalMarks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TeacherId" Type="Int32" />
+          <NavigationProperty Name="Exam_Details" Relationship="SMSModel.FK_Exam_Details_ExamID" FromRole="Exam" ToRole="Exam_Details" />
+          <NavigationProperty Name="Teacher" Relationship="SMSModel.FK_Exams_TeacherId" FromRole="Exam" ToRole="Teacher" />
+          <NavigationProperty Name="Type" Relationship="SMSModel.FK_Exams_TypeId" FromRole="Exam" ToRole="Type" />
+        </EntityType>
+        <EntityType Name="GDPR">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Columns_in_Student" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FUB_StartDate" Type="DateTime" Precision="0" />
+          <Property Name="FUB_EndDate" Type="DateTime" Precision="0" />
+          <Property Name="FUB_TotDays" Type="Int32" />
+          <Property Name="AUB_EndDate" Type="DateTime" Precision="0" />
+          <Property Name="AUB_TotDays" Type="Int32" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TeacherId" Type="Int32" />
+          <Property Name="StudentId" Type="Int32" />
+          <NavigationProperty Name="Student" Relationship="SMSModel.FK_Groups_StudentId" FromRole="Group" ToRole="Student" />
+          <NavigationProperty Name="Teacher" Relationship="SMSModel.FK_Groups_TeacherId" FromRole="Group" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="Internship">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="StudentId" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPhoneNumber" Type="Int32" />
+          <Property Name="ContactEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Technologies" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Student" Relationship="SMSModel.FK_Internship_StudentId" FromRole="Internship" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Question1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Option1" Type="Boolean" />
+          <Property Name="Option2" Type="Boolean" />
+          <Property Name="Option3" Type="Boolean" />
+          <Property Name="Option4" Type="Boolean" />
+          <Property Name="CorrectOption" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Explanation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubjectID" Type="Int32" />
+          <NavigationProperty Name="Exam_Details" Relationship="SMSModel.FK_Exam_Details_QuestionId" FromRole="Question" ToRole="Exam_Details" />
+          <NavigationProperty Name="Subject" Relationship="SMSModel.FK_Questions_SubjectID" FromRole="Question" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Result">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" />
+          <Property Name="TotalMaxScore" Type="Int32" />
+          <Property Name="TotalSubjectScore" Type="Int32" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="Student" Relationship="SMSModel.FK_Result_StudentId" FromRole="Result" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RoleUsers" Relationship="SMSModel.FK_RoleUsers_RoleId" FromRole="Role" ToRole="RoleUser" />
+        </EntityType>
+        <EntityType Name="RoleUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="Role" Relationship="SMSModel.FK_RoleUsers_RoleId" FromRole="RoleUser" ToRole="Role" />
+          <NavigationProperty Name="User" Relationship="SMSModel.FK_RoleUsers_UserId" FromRole="RoleUser" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date_of_Birth" Type="DateTime" Precision="0" />
+          <Property Name="FUB_ärandenummer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AUB_ärandenummer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProfilePicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ICE_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ICE_Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ICE_emails_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HandläggareId" Type="Int32" />
+          <Property Name="GroupId" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Exam_Details" Relationship="SMSModel.FK_Exam_Details_StudentId" FromRole="Student" ToRole="Exam_Details" />
+          <NavigationProperty Name="Groups" Relationship="SMSModel.FK_Groups_StudentId" FromRole="Student" ToRole="Group" />
+          <NavigationProperty Name="Internships" Relationship="SMSModel.FK_Internship_StudentId" FromRole="Student" ToRole="Internship" />
+          <NavigationProperty Name="Results" Relationship="SMSModel.FK_Result_StudentId" FromRole="Student" ToRole="Result" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Exam_Details" Relationship="SMSModel.FK_Exam_Details_SubjectId" FromRole="Subject" ToRole="Exam_Details" />
+          <NavigationProperty Name="Questions" Relationship="SMSModel.FK_Questions_SubjectID" FromRole="Subject" ToRole="Question" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="Exams" Relationship="SMSModel.FK_Exams_TeacherId" FromRole="Teacher" ToRole="Exam" />
+          <NavigationProperty Name="Groups" Relationship="SMSModel.FK_Groups_TeacherId" FromRole="Teacher" ToRole="Group" />
+          <NavigationProperty Name="User" Relationship="SMSModel.FK_Teacher_UserId" FromRole="Teacher" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Exams" Relationship="SMSModel.FK_Exams_TypeId" FromRole="Type" ToRole="Exam" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RoleUsers" Relationship="SMSModel.FK_RoleUsers_UserId" FromRole="User" ToRole="RoleUser" />
+          <NavigationProperty Name="Teachers" Relationship="SMSModel.FK_Teacher_UserId" FromRole="User" ToRole="Teacher" />
+        </EntityType>
+        <Association Name="FK_Exam_Details_ExamID">
+          <End Type="SMSModel.Exam" Role="Exam" Multiplicity="0..1" />
+          <End Type="SMSModel.Exam_Details" Role="Exam_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exam">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exam_Details">
+              <PropertyRef Name="ExamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exam_Details_QuestionId">
+          <End Type="SMSModel.Question" Role="Question" Multiplicity="0..1" />
+          <End Type="SMSModel.Exam_Details" Role="Exam_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exam_Details">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exam_Details_StudentId">
+          <End Type="SMSModel.Student" Role="Student" Multiplicity="0..1" />
+          <End Type="SMSModel.Exam_Details" Role="Exam_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exam_Details">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exam_Details_SubjectId">
+          <End Type="SMSModel.Subject" Role="Subject" Multiplicity="0..1" />
+          <End Type="SMSModel.Exam_Details" Role="Exam_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exam_Details">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exams_TeacherId">
+          <End Type="SMSModel.Teacher" Role="Teacher" Multiplicity="0..1" />
+          <End Type="SMSModel.Exam" Role="Exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exam">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exams_TypeId">
+          <End Type="SMSModel.Type" Role="Type" Multiplicity="0..1" />
+          <End Type="SMSModel.Exam" Role="Exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exam">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Groups_StudentId">
+          <End Type="SMSModel.Student" Role="Student" Multiplicity="0..1" />
+          <End Type="SMSModel.Group" Role="Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Groups_TeacherId">
+          <End Type="SMSModel.Teacher" Role="Teacher" Multiplicity="0..1" />
+          <End Type="SMSModel.Group" Role="Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Internship_StudentId">
+          <End Type="SMSModel.Student" Role="Student" Multiplicity="0..1" />
+          <End Type="SMSModel.Internship" Role="Internship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Internship">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questions_SubjectID">
+          <End Type="SMSModel.Subject" Role="Subject" Multiplicity="0..1" />
+          <End Type="SMSModel.Question" Role="Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Result_StudentId">
+          <End Type="SMSModel.Student" Role="Student" Multiplicity="0..1" />
+          <End Type="SMSModel.Result" Role="Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Result">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleUsers_RoleId">
+          <End Type="SMSModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="SMSModel.RoleUser" Role="RoleUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoleUser">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleUsers_UserId">
+          <End Type="SMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="SMSModel.RoleUser" Role="RoleUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoleUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_UserId">
+          <End Type="SMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="SMSModel.Teacher" Role="Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SMSModelStoreContainer" CdmEntityContainer="SMSEntities">
+          <EntitySetMapping Name="Attendances">
+            <EntityTypeMapping TypeName="SMSModel.Attendance">
+              <MappingFragment StoreEntitySet="Attendance">
+                <ScalarProperty Name="CheckOut_Time" ColumnName="CheckOut_Time" />
+                <ScalarProperty Name="CheckIn_Time" ColumnName="CheckIn_Time" />
+                <ScalarProperty Name="AbsenceReason" ColumnName="AbsenceReason" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Attended" ColumnName="Attended" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Case_Officers">
+            <EntityTypeMapping TypeName="SMSModel.Case_Officer">
+              <MappingFragment StoreEntitySet="Case Officers">
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="SMSModel.Cours">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exam_Details">
+            <EntityTypeMapping TypeName="SMSModel.Exam_Details">
+              <MappingFragment StoreEntitySet="Exam_Details">
+                <ScalarProperty Name="ExamID" ColumnName="ExamID" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="CorrectOption" ColumnName="CorrectOption" />
+                <ScalarProperty Name="Option_Selected" ColumnName="Option Selected" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exams">
+            <EntityTypeMapping TypeName="SMSModel.Exam">
+              <MappingFragment StoreEntitySet="Exams">
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+                <ScalarProperty Name="TotalMarks" ColumnName="TotalMarks" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="TotalNumberOfQuestions" ColumnName="TotalNumberOfQuestions" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GDPRs">
+            <EntityTypeMapping TypeName="SMSModel.GDPR">
+              <MappingFragment StoreEntitySet="GDPR">
+                <ScalarProperty Name="Columns_in_Student" ColumnName="Columns in Student" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="SMSModel.Group">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="AUB_TotDays" ColumnName="AUB_TotDays" />
+                <ScalarProperty Name="AUB_EndDate" ColumnName="AUB_EndDate" />
+                <ScalarProperty Name="FUB_TotDays" ColumnName="FUB_TotDays" />
+                <ScalarProperty Name="FUB_EndDate" ColumnName="FUB_EndDate" />
+                <ScalarProperty Name="FUB_StartDate" ColumnName="FUB_StartDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Internships">
+            <EntityTypeMapping TypeName="SMSModel.Internship">
+              <MappingFragment StoreEntitySet="Internship">
+                <ScalarProperty Name="Technologies" ColumnName="Technologies" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="ContactPhoneNumber" ColumnName="ContactPhoneNumber" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="SMSModel.Question">
+              <MappingFragment StoreEntitySet="Questions">
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="Explanation" ColumnName="Explanation" />
+                <ScalarProperty Name="CorrectOption" ColumnName="CorrectOption" />
+                <ScalarProperty Name="Option4" ColumnName="Option4" />
+                <ScalarProperty Name="Option3" ColumnName="Option3" />
+                <ScalarProperty Name="Option2" ColumnName="Option2" />
+                <ScalarProperty Name="Option1" ColumnName="Option1" />
+                <ScalarProperty Name="Question1" ColumnName="Question" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Results">
+            <EntityTypeMapping TypeName="SMSModel.Result">
+              <MappingFragment StoreEntitySet="Result">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TotalSubjectScore" ColumnName="TotalSubjectScore" />
+                <ScalarProperty Name="TotalMaxScore" ColumnName="TotalMaxScore" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="SMSModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleUsers">
+            <EntityTypeMapping TypeName="SMSModel.RoleUser">
+              <MappingFragment StoreEntitySet="RoleUsers">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="SMSModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="HandläggareId" ColumnName="HandläggareId" />
+                <ScalarProperty Name="ICE_emails_Address" ColumnName="ICE_emails_Address" />
+                <ScalarProperty Name="ICE_Mobile" ColumnName="ICE_Mobile" />
+                <ScalarProperty Name="ICE_name" ColumnName="ICE_name" />
+                <ScalarProperty Name="CV" ColumnName="CV" />
+                <ScalarProperty Name="ProfilePicture" ColumnName="ProfilePicture" />
+                <ScalarProperty Name="AUB_ärandenummer" ColumnName="AUB_ärandenummer" />
+                <ScalarProperty Name="FUB_ärandenummer" ColumnName="FUB_ärandenummer" />
+                <ScalarProperty Name="Date_of_Birth" ColumnName="Date_of_Birth" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="SMSModel.Subject">
+              <MappingFragment StoreEntitySet="Subjects">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="SMSModel.Teacher">
+              <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PersonNumber" ColumnName="PersonNumber" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Types">
+            <EntityTypeMapping TypeName="SMSModel.Type">
+              <MappingFragment StoreEntitySet="Types">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SMSModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
