@@ -84,15 +84,7 @@ CREATE TABLE [dbo].[Questions] (
     
 );
 
-    
-
-
-
-
-
-
-
-
+   
 CREATE TABLE [dbo].[Result] (
     [Id]                INT IDENTITY (1, 1) NOT NULL,
     [StudentId]         INT NULL,
