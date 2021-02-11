@@ -8,8 +8,9 @@ Student Management System Project
 Project Title :	 Student Management System
 Abstract :	Student management system project used to maintain and track students detail with course and fees for any education organization.
 Project Type :	 Desktop / Windows Application
-Technology :	Visual Studio 20109 with C# Language/ wpf
+Technology :	Visual Studio 20109 with C# Language/ wpf,
 Database :	SQL-Server  Database
+
  
 
 Logi Form
