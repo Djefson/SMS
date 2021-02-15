@@ -1,12 +1,6 @@
 
 
-Student Management System Project in C# .Net
-Lets start to develop c#.net project/Wpf  for student management system using visual studio 2019.
-All students can easily learn about visual studio .Net and SQL server and they may be expertise with it. Most of the students don’t have an idea about how to start a project or web application in visual studio .Net. They know all the other things related to project like documentation, diagram, ppt, but they don’t understand what is the first step to start website or windows application project in C#.Net/wpf.
- 
-Student Management System Project
-Project Title :	 Student Management System
-Abstract :	Student management system project used to maintain and track students detail with courses,exams,attendances and teachers for any education organization.
+Student management system project used to maintain and track students detail with courses,exams,attendances and teachers for any education organization.
 Project Type :	 Desktop / Windows Application
 Technology :	Visual Studio 20109 with C# Language/ wpf, Material Design library(plugins/nugget)
 Database :	SQL-Server  Database
