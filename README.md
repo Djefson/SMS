@@ -2,7 +2,7 @@
 
 Student management system project used to maintain and track students detail with courses,exams,attendances and teachers for any education organization.
 Project Type :	 Desktop / Windows Application
-Technology :	Visual Studio 20109 with C# Language/ wpf, Material Design library(plugins/nugget)
+Technology :	Visual Studio 2019 with C# Language/ wpf, Material Design library(plugins/nugget)
 Database :	SQL-Server  Database
 
  
